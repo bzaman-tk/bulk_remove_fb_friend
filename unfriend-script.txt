@@ -1,0 +1,45 @@
+const sleep = (time) => {
+  return new Promise((resolve) => setTimeout(resolve, time))
+}
+
+
+
+const doSomething = async () => {
+var selectionCount = document.querySelectorAll('div[class="x135pmgq"]>div').length;
+
+//outerloop:
+for(var i=0;i<selectionCount;i++){
+
+ 
+var btnCount = document.querySelector('div[data-visualcompletion="ignore-dynamic"] div[aria-label="More"]'); 
+if(btnCount){
+    btnCount.click();
+}else{
+    //continue outerloop;  
+}
+ 
+await sleep(500); 
+var span = document.querySelectorAll('div[role="menuitem"] span[dir="auto"]');
+var txt = '';
+for(var i=0; i<span.length; i++){
+    txt = span[i].textContent;
+    var match = txt.includes("Unfriend");
+    if(match){
+        span[i].click();
+    }
+} 
+
+await sleep(1000);    
+var span = document.querySelectorAll('div[aria-label="Confirm"] span[dir="auto"] span'); 
+var txt = '';
+for(var i=0; i<span.length; i++){
+    txt = span[i].textContent;
+    var match = txt.includes("Confirm");
+    if(match){
+      span[i].click();
+    }
+} 
+    
+} 
+}
+doSomething();
